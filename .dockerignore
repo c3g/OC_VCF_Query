@@ -1,7 +1,14 @@
+.git
+.cache
+.DS_Store
+__pycache__
+.Rhistory
+data
+metadata.tsv
 'Icon'$'\r
 'Icon'$'\r'
 "Icon\r"
 Icon?
 Icon
 Icon\r
-.DS_Store
+
