@@ -33,8 +33,17 @@ RUN oc module install-base
 EXPOSE 8000
 
 # 6. Overwrites original yml files with the new port
-COPY ./cravat.yml /usr/local/lib/python3.11/site-packages/cravat/cravat.yml
-COPY ./cravat.yml /usr/local/lib/python3.11/site-packages/cravat/conf/cravat.yml
+RUN CONFIG_PATH=$(oc config system | head -n 1 | awk '{print $NF}' | sed 's,conf/cravat-system.yml,,g')
+
+COPY ./cravat.yml ${CONFIG_PATH}/cravat.yml
+COPY ./cravat.yml ${CONFIG_PATH}/conf/cravat.yml
+
+# Set up the storage for the jobs:
+RUN mkdir -p /data/jobs
+
+# Set up storage path in system config file:
+RUN SYSTEM_CONFIG=$(oc config system | head -n 1 | awk '{print $NF}') && \
+    sed -i 's,^jobs_dir:.*,jobs_dir: /data/jobs,g' "${SYSTEM_CONFIG}"
 
 # 7. Set the startup launch sequence
 ENTRYPOINT ["oc"]
