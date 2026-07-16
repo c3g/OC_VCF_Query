@@ -51,9 +51,7 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-               type=raw,value=latest
-               type=semver,pattern={{version}}
+          
 
       # This step uses the `docker/build-push-action` action to build the image, based on your repository's `Containerfile`.
       # If the build succeeds, it pushes the image to GitHub Packages.
@@ -68,8 +66,10 @@ jobs:
           context: .
           file: Containerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+               ghcr.io/${{ github.repository }}:${{ github.event.release.tag_name }}
+               ghcr.io/${{ github.repository }}:latest
 
       # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built.
       # It increases supply chain security for people who consume the image.
