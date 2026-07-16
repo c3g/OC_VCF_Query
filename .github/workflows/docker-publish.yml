@@ -68,8 +68,8 @@ jobs:
           push: true
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-               ghcr.io/${{ github.repository }}:${{ github.event.release.tag_name }}
-               ghcr.io/${{ github.repository }}:latest
+               ghcr.io/c3g/oc_vcf_query:${{ github.event.release.tag_name }}
+               ghcr.io/c3g/oc_vcf_query:latest
 
       # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built.
       # It increases supply chain security for people who consume the image.
