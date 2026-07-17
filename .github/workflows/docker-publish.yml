@@ -67,8 +67,6 @@ jobs:
           file: Containerfile
           push: true
           labels: ${{ steps.meta.outputs.labels }}
-          provenance: false
-          sbom: false
           tags: |
                ghcr.io/c3g/oc_vcf_query:${{ github.event.release.tag_name }}
                ghcr.io/c3g/oc_vcf_query:latest
