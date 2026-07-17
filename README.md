@@ -1,6 +1,6 @@
-# \<web-app-template\>
+# OC VCF Query
 
-First find a clear name for your app, and replace the header of this section!
+This containter contains the OpenCravat tool (OC) which is used to run a user-friendly interface to explore annotated VCF variants.
 
 Your app will run into a [podman container](https://podman.io/docs), it will make its deployment easier in our infrastructure.
 
@@ -8,6 +8,16 @@ Your app will run into a [podman container](https://podman.io/docs), it will mak
 
 We user the Containerfile instead of the Dockerfile naming convention to follow the 
 [Open Container Initiative (OCI)](https://opencontainers.org/) conventions. But if you already know how to work with dockerfiles, it is more or less the same thing.
+
+**How to launch container with mounting after container is built** 
+```text
+podman run -p 8000:8080 --name cravat-web \
+  -v <YOUR_DIRECTORY>:/data/jobs:Z \
+  localhost/opencravat-multiuser gui --multiuser --headless
+```
+
+The GUI stays active until `podman stop cravat-web` is run. The GUI is reactivated again with `podman start cravat-web`.
+
 
 1. Installation location
  
