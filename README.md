@@ -13,7 +13,7 @@ We user the Containerfile instead of the Dockerfile naming convention to follow 
 ```text
 podman run -p 8000:8080 --name cravat-web \
   -v <YOUR_DIRECTORY_HOUSING_SQLITES>:/data/jobs:Z \
-  localhost/opencravat-multiuser gui --multiuser --headless
+  ghcr.io/c3g/oc_vcf_query gui --multiuser --headless
 ```
 
 The GUI stays active until `podman stop cravat-web` is run. The GUI is reactivated again with `podman start cravat-web`.
