@@ -1,6 +1,8 @@
 # OC VCF Query
 
-This containter contains the OpenCravat tool (OC) which is used to run a user-friendly interface to explore annotated VCF variants.
+This containter contains the OpenCravat tool (OC) which is used to run a user-friendly interface to explore annotated VCF variants. OpenCRAVAT is a product of the Karchin Lab at Johns Hopkins University with funding provided by the National Cancer Institute’s ITCR program.
+
+**How to cite:** Pagel KA et al. Integrated Informatics Analysis of Cancer-Related Variants. JCO Clinical Cancer Informatics 2020 4, 310-317.
 
 Your app will run into a [podman container](https://podman.io/docs), it will make its deployment easier in our infrastructure.
 
